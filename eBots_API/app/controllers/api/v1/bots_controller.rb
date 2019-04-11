@@ -1,23 +1,23 @@
 class Api::V1::BotsController < ApplicationController
-	def toggle_sale
-		bot = Bot.find(params[:id])
+  def toggle_sale
+    bot = Bot.find(params[:id])
 
-		bot.update(for_sale: !bot.for_sale)
+    bot.update(for_sale: !bot.for_sale)
 
-		render json: bot
-	end
+    render json: bot
+  end
 
-	def index
-		bots = Bot.where(for_sale: true)
+  def index
+    bots = Bot.where(for_sale: true)
 
-		render json: bots
-	end
+    render json: bots
+  end
 
-	def purchase
-		bot = Bot.find(params[:id])
+  def purchase
+    bot = Bot.find(params[:id])
 
-		bot.update(for_sale: false)
-		
-		render json: bot
-	end
+    bot.update(for_sale: false)
+
+    render json: bot
+  end
 end
